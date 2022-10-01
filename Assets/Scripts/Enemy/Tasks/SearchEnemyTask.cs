@@ -35,7 +35,9 @@ public class SearchEnemyTask : AbstractEnemyTask
             while (searchLength > 0 && failedPoints < FailedPointThreshold)
             {
                 // Select Random Search Point and Calculate Path
-                EnemySearchPoint searchPoint = searchZone.SearchPoints[Random.Range(0, searchZone.SearchPoints.Length)];
+                EnemySearchPoint searchPoint;
+                do { searchPoint = searchZone.SearchPoints[Random.Range(0, searchZone.SearchPoints.Length)]; }
+                while (!searchPoint.gameObject.activeSelf);
                 EnemyAgent.CalculatePath(searchPoint.transform.position, path);
 
                 // Check if Path is Valid
@@ -66,20 +68,26 @@ public class SearchEnemyTask : AbstractEnemyTask
     private IEnumerator LookAroundPoint(EnemySearchPoint point)
     {
         float lingerDoneAt = Time.time + Random.Range(point.LingerTimeMin, point.LingerTimeMax);
+        SearchArc lastSearchArc = null;
 
         Enemy.Artifact.State = ArtifactState.Focused;
         while (Time.time < lingerDoneAt)
         {
-            yield return LookToAngle(Random.insideUnitCircle.normalized);
+            SearchArc arc;
+            do { arc = point.SearchArcs[Random.Range(0, point.SearchArcs.Length)]; }
+            while (point.SearchArcs.Length > 1 && arc == lastSearchArc);
+
+            yield return LookAroundArc(arc);
             yield return new WaitForSeconds(Random.Range(LookTimerRange.x, LookTimerRange.y));
         }
         Enemy.Artifact.State = ArtifactState.Area;
     }
 
-    private IEnumerator LookToAngle(Vector2 targetHeading)
+    private IEnumerator LookAroundArc(SearchArc arc)
     {
-        Vector2 forward = new Vector2(Enemy.transform.forward.x, Enemy.transform.forward.z).normalized;
-        float targetDelta = Vector2.SignedAngle(forward, targetHeading);
+        float targetAngle = Mathf.Repeat(Random.Range(arc.AngleMinimum, arc.AngleMaximum), 360.0f);
+        float targetDelta = Mathf.DeltaAngle(Enemy.transform.rotation.eulerAngles.y, targetAngle);
+
         float deltaSign = Mathf.Sign(targetDelta);
         float step = deltaSign * LookAroundSpeed;
         float deltaLeft = targetDelta;

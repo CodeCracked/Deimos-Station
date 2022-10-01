@@ -43,5 +43,7 @@ public class EnemySearchZone : MonoBehaviour
             ZoneBounds.Encapsulate(searchPoint.transform.position);
             searchPoint.Zone = this;
         }
+        ZoneBounds.Encapsulate(ZoneBounds.min - new Vector3(1, 0, 1));
+        ZoneBounds.Encapsulate(ZoneBounds.max + new Vector3(1, 0, 1));
     }
 }
