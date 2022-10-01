@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TimerLightManager : MonoBehaviour
 {
+    public static bool AreLightsOn { get; private set; }
     private static readonly Dictionary<Light, float> _lights = new();
     public static void RegisterLight(Light light){ _lights.Add(light, light.intensity); }
 
@@ -17,6 +18,7 @@ public class TimerLightManager : MonoBehaviour
     public void OnEnable()
     {
         _turningOn = false;
+        AreLightsOn = true;
     }
 
     public void Update()
@@ -46,6 +48,7 @@ public class TimerLightManager : MonoBehaviour
 
             _timer -= SolidStateTime + FlickerTime;
             _turningOn = !_turningOn;
+            AreLightsOn = !_turningOn;
         }
     }
 }

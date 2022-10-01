@@ -70,12 +70,13 @@ public class VisionCone : MonoBehaviour
 
 public class VisionConeHit
 {
-    public VisionConeTarget Target;
-    public GameObject GameObject;
-    public Transform TargetPoint;
-    public RaycastHit Raycast;
-    public float Distance;
-    public float Angle;
+    public readonly VisionConeTarget Target;
+    public readonly GameObject GameObject;
+    public readonly Transform TargetPoint;
+    public readonly RaycastHit Raycast;
+    public readonly float Distance;
+    public readonly float Angle;
+    public readonly bool InDarkness;
 
     public VisionConeHit(VisionConeTarget target, Transform targetPoint, RaycastHit raycast, Vector3 conePosition, Vector3 coneHeading)
     {
@@ -87,5 +88,6 @@ public class VisionConeHit
         Raycast = raycast;
         Distance = raycast.distance;
         Angle = Vector3.Angle(coneHeading, heading);
+        InDarkness = target.IsInDarkness;
     }
 }

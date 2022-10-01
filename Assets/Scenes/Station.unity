@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 5312087}
   - component: {fileID: 5312089}
   - component: {fileID: 5312088}
+  - component: {fileID: 5312090}
+  - component: {fileID: 5312091}
   m_Layer: 0
   m_Name: Station Light (2)
   m_TagString: Untagged
@@ -230,6 +232,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &5312090
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5312091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &38065472
 GameObject:
   m_ObjectHideFlags: 0
@@ -20765,6 +20793,9 @@ MonoBehaviour:
   - {fileID: 413442579}
   - {fileID: 1036524336}
   - {fileID: 1941498236}
+  LightMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &233731973
 GameObject:
   m_ObjectHideFlags: 0
@@ -20870,6 +20901,8 @@ GameObject:
   - component: {fileID: 254917953}
   - component: {fileID: 254917955}
   - component: {fileID: 254917954}
+  - component: {fileID: 254917956}
+  - component: {fileID: 254917957}
   m_Layer: 0
   m_Name: Station Light (7)
   m_TagString: Untagged
@@ -20966,6 +20999,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &254917956
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254917952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &254917957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254917952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &274177108
 GameObject:
   m_ObjectHideFlags: 0
@@ -21036,6 +21095,8 @@ GameObject:
   - component: {fileID: 280347561}
   - component: {fileID: 280347563}
   - component: {fileID: 280347562}
+  - component: {fileID: 280347564}
+  - component: {fileID: 280347565}
   m_Layer: 0
   m_Name: Station Light (10)
   m_TagString: Untagged
@@ -21132,6 +21193,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &280347564
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280347560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &280347565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280347560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354386985
 GameObject:
   m_ObjectHideFlags: 0
@@ -21515,6 +21602,8 @@ GameObject:
   - component: {fileID: 370065727}
   - component: {fileID: 370065729}
   - component: {fileID: 370065728}
+  - component: {fileID: 370065730}
+  - component: {fileID: 370065731}
   m_Layer: 0
   m_Name: Station Light (1)
   m_TagString: Untagged
@@ -21611,6 +21700,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &370065730
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370065726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &370065731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370065726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374256709
 GameObject:
   m_ObjectHideFlags: 0
@@ -21799,6 +21914,8 @@ GameObject:
   - component: {fileID: 453794781}
   - component: {fileID: 453794783}
   - component: {fileID: 453794782}
+  - component: {fileID: 453794784}
+  - component: {fileID: 453794785}
   m_Layer: 0
   m_Name: Station Light (5)
   m_TagString: Untagged
@@ -21895,6 +22012,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &453794784
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453794780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &453794785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453794780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &485942012
 GameObject:
   m_ObjectHideFlags: 0
@@ -23630,6 +23773,8 @@ GameObject:
   - component: {fileID: 672873436}
   - component: {fileID: 672873438}
   - component: {fileID: 672873437}
+  - component: {fileID: 672873439}
+  - component: {fileID: 672873440}
   m_Layer: 0
   m_Name: Station Light (9)
   m_TagString: Untagged
@@ -23726,6 +23871,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &672873439
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672873435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &672873440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672873435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &689125677
 GameObject:
   m_ObjectHideFlags: 0
@@ -23737,6 +23908,8 @@ GameObject:
   - component: {fileID: 689125678}
   - component: {fileID: 689125680}
   - component: {fileID: 689125679}
+  - component: {fileID: 689125681}
+  - component: {fileID: 689125682}
   m_Layer: 0
   m_Name: Station Light (12)
   m_TagString: Untagged
@@ -23833,6 +24006,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &689125681
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689125677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &689125682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689125677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &692407973
 GameObject:
   m_ObjectHideFlags: 0
@@ -23844,6 +24043,8 @@ GameObject:
   - component: {fileID: 692407974}
   - component: {fileID: 692407976}
   - component: {fileID: 692407975}
+  - component: {fileID: 692407977}
+  - component: {fileID: 692407978}
   m_Layer: 0
   m_Name: Station Light (3)
   m_TagString: Untagged
@@ -23940,6 +24141,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &692407977
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692407973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &692407978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692407973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &723270971
 GameObject:
   m_ObjectHideFlags: 0
@@ -23951,6 +24178,8 @@ GameObject:
   - component: {fileID: 723270972}
   - component: {fileID: 723270974}
   - component: {fileID: 723270973}
+  - component: {fileID: 723270975}
+  - component: {fileID: 723270976}
   m_Layer: 0
   m_Name: Station Light (4)
   m_TagString: Untagged
@@ -24047,6 +24276,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &723270975
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723270971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &723270976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723270971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &729723325
 GameObject:
   m_ObjectHideFlags: 0
@@ -24284,6 +24539,8 @@ GameObject:
   - component: {fileID: 732023243}
   - component: {fileID: 732023245}
   - component: {fileID: 732023244}
+  - component: {fileID: 732023246}
+  - component: {fileID: 732023247}
   m_Layer: 0
   m_Name: Station Light (13)
   m_TagString: Untagged
@@ -24380,6 +24637,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &732023246
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732023242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &732023247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732023242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &783152142
 Mesh:
   m_ObjectHideFlags: 0
@@ -24560,7 +24843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &790296226
 Transform:
   m_ObjectHideFlags: 0
@@ -26869,6 +27152,8 @@ GameObject:
   - component: {fileID: 1096880904}
   - component: {fileID: 1096880906}
   - component: {fileID: 1096880905}
+  - component: {fileID: 1096880907}
+  - component: {fileID: 1096880908}
   m_Layer: 0
   m_Name: Station Light (11)
   m_TagString: Untagged
@@ -26965,6 +27250,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &1096880907
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096880903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1096880908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096880903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1100526097
 GameObject:
   m_ObjectHideFlags: 0
@@ -26976,6 +27287,8 @@ GameObject:
   - component: {fileID: 1100526098}
   - component: {fileID: 1100526099}
   - component: {fileID: 1100526100}
+  - component: {fileID: 1100526101}
+  - component: {fileID: 1100526102}
   m_Layer: 0
   m_Name: Station Light
   m_TagString: Untagged
@@ -27070,6 +27383,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4375561eab542429c7ba462cb99da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &1100526101
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100526097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 9
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1100526102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100526097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1100662464
@@ -27440,6 +27779,9 @@ GameObject:
   - component: {fileID: 1130894502}
   - component: {fileID: 1130894504}
   - component: {fileID: 1130894503}
+  - component: {fileID: 1130894505}
+  - component: {fileID: 1130894506}
+  - component: {fileID: 1130894507}
   m_Layer: 0
   m_Name: Station Light (17)
   m_TagString: Untagged
@@ -27536,6 +27878,46 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &1130894505
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130894501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &1130894506
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130894501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1130894507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130894501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1142985899
 GameObject:
   m_ObjectHideFlags: 0
@@ -31142,6 +31524,8 @@ GameObject:
   - component: {fileID: 1716182340}
   - component: {fileID: 1716182342}
   - component: {fileID: 1716182341}
+  - component: {fileID: 1716182343}
+  - component: {fileID: 1716182344}
   m_Layer: 0
   m_Name: Station Light (8)
   m_TagString: Untagged
@@ -31238,6 +31622,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &1716182343
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716182339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1716182344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716182339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1746604905
 GameObject:
   m_ObjectHideFlags: 0
@@ -32206,6 +32616,8 @@ GameObject:
   - component: {fileID: 1782079652}
   - component: {fileID: 1782079654}
   - component: {fileID: 1782079653}
+  - component: {fileID: 1782079655}
+  - component: {fileID: 1782079656}
   m_Layer: 0
   m_Name: Station Light (6)
   m_TagString: Untagged
@@ -32302,6 +32714,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &1782079655
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782079651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1782079656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782079651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789235842
 GameObject:
   m_ObjectHideFlags: 0
@@ -33437,6 +33875,8 @@ GameObject:
   - component: {fileID: 1906206151}
   - component: {fileID: 1906206153}
   - component: {fileID: 1906206152}
+  - component: {fileID: 1906206154}
+  - component: {fileID: 1906206155}
   m_Layer: 0
   m_Name: Station Light (16)
   m_TagString: Untagged
@@ -33533,6 +33973,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!136 &1906206154
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906206150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.5
+  m_Height: 100
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1906206155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906206150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6f991f9e99c2e4c83f0a1309bc50d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1941498235
 GameObject:
   m_ObjectHideFlags: 0
