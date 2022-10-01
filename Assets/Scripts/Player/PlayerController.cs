@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        Vector3 move = new(Input.GetAxis(HorizontalAxis), 0, Input.GetAxis(VerticalAxis));
+        Vector3 move = new Vector3(Input.GetAxis(HorizontalAxis), 0, Input.GetAxis(VerticalAxis)).normalized;
         if (move.sqrMagnitude > 0)
         {
             move *= Speed;
