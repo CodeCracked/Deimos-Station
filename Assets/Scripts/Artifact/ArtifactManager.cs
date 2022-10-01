@@ -1,15 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ArtifactManager : MonoBehaviour
 {
-    public PlayerController Player;
     public Light AreaLight;
     public Light FocusLight;
-    public string FocusButton = "Fire1";
-    public string ConcealButton = "Fire2";
     public float FadeTime = 0.25f;
     public float FocusTransitionAngle = 180.0f;
+    public UnityEvent<ArtifactState> OnStateChange = new();
 
     public ArtifactState State
     {
@@ -18,10 +17,26 @@ public class ArtifactManager : MonoBehaviour
         {
             if (_state != value)
             {
-                if (value == ArtifactState.Focused) Player.Speed *= 0.5f;
-                else if (_state == ArtifactState.Focused) Player.Speed *= 2;
+                StopAllCoroutines();
+                OnStateChange.Invoke(value);
+                _state = value;
+
+                switch (_state)
+                {
+                    case ArtifactState.Concealed:
+                        StartCoroutine(DisableLight(AreaLight, _areaLightIntensity));
+                        StartCoroutine(DisableLight(FocusLight, _focusLightIntensity));
+                        break;
+                    case ArtifactState.Focused:
+                        StartCoroutine(DisableLight(AreaLight, _areaLightIntensity));
+                        StartCoroutine(EnableLight(FocusLight, _focusLightIntensity));
+                        break;
+                    case ArtifactState.Area:
+                        StartCoroutine(EnableLight(AreaLight, _areaLightIntensity));
+                        StartCoroutine(DisableLight(FocusLight, _focusLightIntensity));
+                        break;
+                }
             }
-            _state = value;
         }
     }
 
@@ -38,40 +53,6 @@ public class ArtifactManager : MonoBehaviour
 
         FocusLight.intensity = 0;
         FocusLight.gameObject.SetActive(true);
-    }
-
-    public void Update()
-    {
-        if (Input.GetButton(ConcealButton))
-        {
-            if (State != ArtifactState.Concealed)
-            {
-                StopAllCoroutines();
-                State = ArtifactState.Concealed;
-                StartCoroutine(DisableLight(AreaLight, _areaLightIntensity));
-                StartCoroutine(DisableLight(FocusLight, _focusLightIntensity));
-            }
-        }
-        else if (Input.GetButton(FocusButton))
-        {
-            if (State != ArtifactState.Focused)
-            {
-                StopAllCoroutines();
-                State = ArtifactState.Focused;
-                StartCoroutine(DisableLight(AreaLight, _areaLightIntensity));
-                StartCoroutine(EnableLight(FocusLight, _focusLightIntensity));
-            }
-        }
-        else
-        {
-            if (State != ArtifactState.Area)
-            {
-                StopAllCoroutines();
-                State = ArtifactState.Area;
-                StartCoroutine(EnableLight(AreaLight, _areaLightIntensity));
-                StartCoroutine(DisableLight(FocusLight, _focusLightIntensity));
-            }
-        }
     }
 
     private IEnumerator DisableLight(Light light, float intensity)
