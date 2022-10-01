@@ -14,6 +14,9 @@ public class EnemySearchZone : MonoBehaviour
     public Bounds ZoneBounds;
 
 #if UNITY_EDITOR
+    [Header("Editor Only Settings")]
+    public bool AlwaysDraw = false;
+
     public void Update()
     {
         if (RebuildZone)
@@ -22,8 +25,16 @@ public class EnemySearchZone : MonoBehaviour
             RebuildZone = false;
         }
     }
-
     public void OnDrawGizmos()
+    {
+        if (AlwaysDraw) Draw();
+    }
+    public void OnDrawGizmosSelected()
+    {
+        if (!AlwaysDraw) Draw();
+    }
+
+    private void Draw()
     {
         Gizmos.color = ZoneColor;
         Gizmos.DrawWireCube(ZoneBounds.center, ZoneBounds.size);

@@ -18,6 +18,16 @@ public class EnemySearchPoint : MonoBehaviour
 #if UNITY_EDITOR
     public void OnDrawGizmos()
     {
+        if (Zone && Zone.AlwaysDraw) Draw();
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        if (!Zone || !Zone.AlwaysDraw) Draw();
+    }
+
+    private void Draw()
+    {
         Gizmos.color = Color;
         Gizmos.DrawSphere(transform.position, 0.5f);
 
