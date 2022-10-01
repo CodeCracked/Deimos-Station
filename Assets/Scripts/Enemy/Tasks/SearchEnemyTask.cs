@@ -6,6 +6,8 @@ public class SearchEnemyTask : AbstractEnemyTask
 {
     private static readonly int FailedPointThreshold = 10;
     private static readonly float PathCheckInterval = 0.2f;
+    private static readonly float LookAroundSpeed = 60.0f;
+    private static readonly Vector2 LookTimerRange = new(1.0f, 3.0f);
 
     public SearchEnemyTask(EnemyController enemy, NavMeshAgent enemyAgent) : base(enemy, enemyAgent)
     {
@@ -13,8 +15,8 @@ public class SearchEnemyTask : AbstractEnemyTask
 
     public override IEnumerator RunTask()
     {
-        EnemySearchZone searchZone = Enemy.SearchZones[Random.Range(0, Enemy.SearchZones.Length)];
-        int searchLength = Random.Range(searchZone.SearchLengthMin, searchZone.SearchLengthMax + 1);
+        EnemySearchZone searchZone;
+        int searchLength;
         NavMeshPath path = new();
 
         EnemyAgent.speed = Enemy.SearchSpeed;
@@ -48,8 +50,9 @@ public class SearchEnemyTask : AbstractEnemyTask
                     EnemyAgent.SetPath(path);
                 }
 
-                // Wait for Path Completion
+                // Wait for Path Completion, Then Look Around
                 while (!EnemyAgent.ReachedDestinationOrGaveUp()) yield return new WaitForSecondsRealtime(PathCheckInterval);
+                yield return LookAroundPoint(searchPoint);
                 searchLength--;
 
                 Debug.LogFormat("Reached target point. Remaining points: {0}", searchLength);
@@ -58,5 +61,36 @@ public class SearchEnemyTask : AbstractEnemyTask
             Debug.Log("Finished Search", Enemy);
         }
         while (!Finished);
+    }
+
+    private IEnumerator LookAroundPoint(EnemySearchPoint point)
+    {
+        float lingerDoneAt = Time.time + Random.Range(point.LingerTimeMin, point.LingerTimeMax);
+
+        Enemy.Artifact.State = ArtifactState.Focused;
+        while (Time.time < lingerDoneAt)
+        {
+            yield return LookToAngle(Random.insideUnitCircle.normalized);
+            yield return new WaitForSeconds(Random.Range(LookTimerRange.x, LookTimerRange.y));
+        }
+        Enemy.Artifact.State = ArtifactState.Area;
+    }
+
+    private IEnumerator LookToAngle(Vector2 targetHeading)
+    {
+        Vector2 forward = new Vector2(Enemy.transform.forward.x, Enemy.transform.forward.z).normalized;
+        float targetDelta = Vector2.SignedAngle(forward, targetHeading);
+        float deltaSign = Mathf.Sign(targetDelta);
+        float step = deltaSign * LookAroundSpeed;
+        float deltaLeft = targetDelta;
+
+        do
+        {
+            float delta = step * Time.deltaTime;
+            deltaLeft -= delta;
+            Enemy.transform.Rotate(0, delta, 0);
+            yield return null;
+        }
+        while (deltaSign == Mathf.Sign(deltaLeft));
     }
 }

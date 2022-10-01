@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Enemy Config")]
+    public ArtifactManager Artifact;
     public EnemySearchZone[] SearchZones;
     public float SearchSpeed = 3.0f;
 

@@ -16701,8 +16701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!4 &143149401
 Transform:
@@ -16792,6 +16792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df40b052357ff8b429763f02ddffdb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Artifact: {fileID: 158330927}
   SearchZones:
   - {fileID: 38065474}
   - {fileID: 520034053}
@@ -17504,8 +17505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!1 &280347560
 GameObject:
@@ -18139,8 +18140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!1 &370065726
 GameObject:
@@ -18279,8 +18280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!4 &374256711
 Transform:
@@ -18376,8 +18377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!1 &453794780
 GameObject:
@@ -19132,8 +19133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!4 &576564318
 Transform:
@@ -20175,8 +20176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!4 &605144255
 Transform:
@@ -21256,8 +21257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &815202490
 GameObject:
@@ -21532,8 +21533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &925384267
 GameObject:
@@ -23206,8 +23207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!43 &1089655382
 Mesh:
@@ -24096,8 +24097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!1 &1207450454
 GameObject:
@@ -24129,8 +24130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 1696809262}
 --- !u!4 &1207450456
 Transform:
@@ -24254,8 +24255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!43 &1232558834
 Mesh:
@@ -26531,8 +26532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &1436070010
 GameObject:
@@ -27126,8 +27127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &1668346826
 GameObject:
@@ -27174,8 +27175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!43 &1687493654
 Mesh:
@@ -27557,8 +27558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &1759134427
 GameObject:
@@ -29514,8 +29515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!1 &1906206150
 GameObject:
@@ -30462,8 +30463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!43 &2004584243
 Mesh:
@@ -30674,8 +30675,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 38065474}
 --- !u!1 &2035063473
 GameObject:
@@ -31243,8 +31244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 1
-  LingerTimeMin: 3
-  LingerTimeMax: 5
+  LingerTimeMin: 5
+  LingerTimeMax: 10
   Zone: {fileID: 520034053}
 --- !u!1 &2123126377
 GameObject:
