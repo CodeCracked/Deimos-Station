@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ArtifactManager : MonoBehaviour
 {
+    public PlayerController Player;
     public Light AreaLight;
     public Light FocusLight;
     public string FocusButton = "Fire1";
@@ -10,7 +11,21 @@ public class ArtifactManager : MonoBehaviour
     public float FadeTime = 0.25f;
     public float FocusTransitionAngle = 180.0f;
 
-    public ArtifactState State { get; private set; }
+    public ArtifactState State
+    {
+        get => _state;
+        set
+        {
+            if (_state != value)
+            {
+                if (value == ArtifactState.Focused) Player.Speed *= 0.5f;
+                else if (_state == ArtifactState.Focused) Player.Speed *= 2;
+            }
+            _state = value;
+        }
+    }
+
+    private ArtifactState _state;
     private float _areaLightIntensity;
     private float _focusLightIntensity;
     private float _focusLightAngle;

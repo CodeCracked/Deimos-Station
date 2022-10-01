@@ -1056,6 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ad70b0ea822634eba25bf565996fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 729723330}
   AreaLight: {fileID: 233731975}
   FocusLight: {fileID: 790296227}
   FocusButton: Fire1
