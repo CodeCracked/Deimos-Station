@@ -14,5 +14,7 @@ public abstract class AbstractEnemyTask
     }
 
     public abstract IEnumerator RunTask();
+    public abstract void OnSensorTriggered(AbstractEnemySensor sensor, object sensorResult);
+
     public virtual void CancelTask() { }
 }

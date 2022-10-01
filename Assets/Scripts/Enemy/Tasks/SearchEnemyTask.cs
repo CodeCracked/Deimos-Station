@@ -6,20 +6,19 @@ public class SearchEnemyTask : AbstractEnemyTask
 {
     private static readonly int FailedPointThreshold = 10;
     private static readonly float PathCheckInterval = 0.2f;
-    private static readonly float LookAroundSpeed = 60.0f;
-    private static readonly Vector2 LookTimerRange = new(1.0f, 3.0f);
 
     public SearchEnemyTask(EnemyController enemy, NavMeshAgent enemyAgent) : base(enemy, enemyAgent)
     {
     }
 
+    #region Task Actions
     public override IEnumerator RunTask()
     {
         EnemySearchZone searchZone;
         int searchLength;
         NavMeshPath path = new();
 
-        EnemyAgent.speed = Enemy.SearchSpeed;
+        EnemyAgent.speed = Enemy.AISettings.SearchSpeed;
 
         do
         {
@@ -64,7 +63,6 @@ public class SearchEnemyTask : AbstractEnemyTask
         }
         while (!Finished);
     }
-
     private IEnumerator LookAroundPoint(EnemySearchPoint point)
     {
         float lingerDoneAt = Time.time + Random.Range(point.LingerTimeMin, point.LingerTimeMax);
@@ -78,7 +76,7 @@ public class SearchEnemyTask : AbstractEnemyTask
             while (point.SearchArcs.Length > 1 && arc == lastSearchArc);
 
             yield return LookAroundArc(arc);
-            yield return new WaitForSeconds(Random.Range(LookTimerRange.x, LookTimerRange.y));
+            yield return new WaitForSeconds(Random.Range(Enemy.AISettings.LookTimerRange.x, Enemy.AISettings.LookTimerRange.y));
         }
         Enemy.Artifact.State = ArtifactState.Area;
     }
@@ -89,7 +87,7 @@ public class SearchEnemyTask : AbstractEnemyTask
         float targetDelta = Mathf.DeltaAngle(Enemy.transform.rotation.eulerAngles.y, targetAngle);
 
         float deltaSign = Mathf.Sign(targetDelta);
-        float step = deltaSign * LookAroundSpeed;
+        float step = deltaSign * Enemy.AISettings.LookAroundSpeed;
         float deltaLeft = targetDelta;
 
         do
@@ -101,4 +99,14 @@ public class SearchEnemyTask : AbstractEnemyTask
         }
         while (deltaSign == Mathf.Sign(deltaLeft));
     }
+    #endregion
+    #region Sensor Actions
+    public override void OnSensorTriggered(AbstractEnemySensor sensor, object sensorResult)
+    {
+        if (sensor is VisionConeSensor visionConeSensor && sensorResult is VisionConeHit visionHit)
+        {
+            Debug.Log("Found " + visionHit.GameObject.name);
+        }
+    }
+    #endregion
 }

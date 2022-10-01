@@ -39,17 +39,17 @@ public class ArtifactManager : MonoBehaviour
             }
         }
     }
+    public float FocusLightAngle { get; private set; }
 
     private ArtifactState _state;
     private float _areaLightIntensity;
     private float _focusLightIntensity;
-    private float _focusLightAngle;
 
     public void Awake()
     {
         _areaLightIntensity = AreaLight.intensity;
         _focusLightIntensity = FocusLight.intensity;
-        _focusLightAngle = FocusLight.spotAngle;
+        FocusLightAngle = FocusLight.spotAngle;
 
         FocusLight.intensity = 0;
         FocusLight.gameObject.SetActive(true);
@@ -57,11 +57,11 @@ public class ArtifactManager : MonoBehaviour
 
     private IEnumerator DisableLight(Light light, float intensity)
     {
-        light.spotAngle = _focusLightAngle;
+        light.spotAngle = FocusLightAngle;
         while (light.intensity > 0)
         {
             light.intensity -= Time.deltaTime * intensity / FadeTime;
-            light.spotAngle += Time.deltaTime * (FocusTransitionAngle - _focusLightAngle) / FadeTime;
+            light.spotAngle += Time.deltaTime * (FocusTransitionAngle - FocusLightAngle) / FadeTime;
             if (light.intensity <= 0)
             {
                 light.intensity = 0;
@@ -77,11 +77,11 @@ public class ArtifactManager : MonoBehaviour
         while (light.intensity < intensity)
         {
             light.intensity += Time.deltaTime * intensity / FadeTime;
-            light.spotAngle -= Time.deltaTime * (FocusTransitionAngle - _focusLightAngle) / FadeTime;
+            light.spotAngle -= Time.deltaTime * (FocusTransitionAngle - FocusLightAngle) / FadeTime;
             if (light.intensity >= intensity)
             {
                 light.intensity = intensity;
-                light.spotAngle = _focusLightAngle;
+                light.spotAngle = FocusLightAngle;
                 break;
             }
             else yield return null;
