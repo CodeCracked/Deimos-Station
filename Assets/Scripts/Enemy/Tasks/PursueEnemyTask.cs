@@ -16,7 +16,7 @@ public class PursueEnemyTask : AbstractEnemyTask
 
     public override IEnumerator RunTask()
     {
-        Enemy.SoundManager.PlaySound(Enemy.PursueSound, 96.0f, 1.0f);
+        Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
         Enemy.Artifact.State = ArtifactState.Focused;
 
         NavMeshPath path = new();

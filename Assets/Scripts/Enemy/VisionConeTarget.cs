@@ -4,6 +4,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class VisionConeTarget : MonoBehaviour
 {
+    public ArtifactManager Artifact;
     public Transform[] TargetPoints;
 
     public bool IsInDarkness => _lightSources.Count == 0 || !TimerLightManager.AreLightsOn;

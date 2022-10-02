@@ -7,9 +7,9 @@ using UnityEditor;
 
 public class VisionCone : MonoBehaviour
 {
-    private static List<VisionConeTarget> _targets = new();
-    public static void AddTarget(VisionConeTarget target) { if (!_targets.Contains(target)) _targets.Add(target); }
-    public static void RemoveTarget(VisionConeTarget target) { if (_targets.Contains(target)) _targets.Remove(target); }
+    public static readonly List<VisionConeTarget> Targets = new();
+    public static void AddTarget(VisionConeTarget target) { if (!Targets.Contains(target)) Targets.Add(target); }
+    public static void RemoveTarget(VisionConeTarget target) { if (Targets.Contains(target)) Targets.Remove(target); }
 
     public float BlindsightRadius = 3.0f;
     [Range(0.0f, 360.0f)] public float Angle = 50.0f;
@@ -35,7 +35,7 @@ public class VisionCone : MonoBehaviour
 
         CalculateResults(true);
         Gizmos.color = Color.red;
-        foreach (VisionConeTarget target in _targets) foreach (Transform targetPoint in target.TargetPoints) Gizmos.DrawLine(transform.position, targetPoint.position);
+        foreach (VisionConeTarget target in Targets) foreach (Transform targetPoint in target.TargetPoints) Gizmos.DrawLine(transform.position, targetPoint.position);
         Gizmos.color = Color.green;
         foreach (VisionConeHit hit in _resultsCache) Gizmos.DrawLine(transform.position, hit.TargetPoint.position);
     }
@@ -45,7 +45,7 @@ public class VisionCone : MonoBehaviour
     public List<VisionConeHit> CalculateResults(bool checkMultiplePoints = true)
     {
         _resultsCache.Clear();
-        foreach (VisionConeTarget target in _targets) CanSeeTarget(target, _resultsCache, checkMultiplePoints);
+        foreach (VisionConeTarget target in Targets) CanSeeTarget(target, _resultsCache, checkMultiplePoints);
         return _resultsCache;
     }
 

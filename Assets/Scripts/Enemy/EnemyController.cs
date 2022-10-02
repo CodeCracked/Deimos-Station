@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     public EnemyAISettings AISettings;
 
     [Header("Enemy Sounds")]
-    public AudioClipPool PursueSound;
+    public AudioClipPool NoticedSound;
 
     private NavMeshAgent _agent;
     private AbstractEnemyTask _currentTask;
@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
         _sensors = new AbstractEnemySensor[]
         {
             new VisionConeSensor(this, _agent, 0.1f),
+            new ArtifactFocusSensor(this, _agent, 0.1f)
         };
 
         SetTask(new SearchEnemyTask(this, _agent));
@@ -86,4 +87,5 @@ public class EnemyAISettings
     [Header("Vision Settings")]
     public float AreaSight = 16.0f;
     public float Blindsight = 3.0f;
+    public float SenseFocusedArtifactRange = 32.0f;
 }

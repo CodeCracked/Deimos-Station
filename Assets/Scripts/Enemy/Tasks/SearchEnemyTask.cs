@@ -103,6 +103,7 @@ public class SearchEnemyTask : AbstractEnemyTask
     public override void OnSensorTriggered(AbstractEnemySensor sensor, object sensorResult)
     {
         if (sensor is VisionConeSensor && sensorResult is VisionConeHit visionHit) Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionHit.Target));
+        else if (sensor is ArtifactFocusSensor && sensorResult is VisionConeTarget visionTarget) Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionTarget));
     }
     #endregion
 }
