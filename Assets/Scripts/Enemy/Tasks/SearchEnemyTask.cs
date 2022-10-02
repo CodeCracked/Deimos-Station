@@ -27,7 +27,6 @@ public class SearchEnemyTask : AbstractEnemyTask
 
             Debug.LogFormat("Starting Search at {0} with length {1}", searchZone.gameObject.name, searchLength);
 
-
             // Run Search
             int failedPoints = 0;
             while (searchLength > 0 && failedPoints < FailedPointThreshold)
@@ -74,36 +73,25 @@ public class SearchEnemyTask : AbstractEnemyTask
             do { arc = point.SearchArcs[Random.Range(0, point.SearchArcs.Length)]; }
             while (point.SearchArcs.Length > 1 && arc == lastSearchArc);
 
-            yield return LookAroundArc(arc);
+            yield return LookAtAngle(Random.Range(arc.AngleMinimum, arc.AngleMaximum), Enemy.AISettings.SearchLookSpeed);
             yield return new WaitForSeconds(Random.Range(Enemy.AISettings.LookTimerRange.x, Enemy.AISettings.LookTimerRange.y));
         }
         Enemy.Artifact.State = ArtifactState.Area;
-    }
-
-    private IEnumerator LookAroundArc(SearchArc arc)
-    {
-        float targetAngle = Mathf.Repeat(Random.Range(arc.AngleMinimum, arc.AngleMaximum), 360.0f);
-        float targetDelta = Mathf.DeltaAngle(Enemy.transform.rotation.eulerAngles.y, targetAngle);
-
-        float deltaSign = Mathf.Sign(targetDelta);
-        float step = deltaSign * Enemy.AISettings.LookAroundSpeed;
-        float deltaLeft = targetDelta;
-
-        do
-        {
-            float delta = step * Time.deltaTime;
-            deltaLeft -= delta;
-            Enemy.transform.Rotate(0, delta, 0);
-            yield return null;
-        }
-        while (deltaSign == Mathf.Sign(deltaLeft));
     }
     #endregion
     #region Sensor Actions
     public override void OnSensorTriggered(AbstractEnemySensor sensor, object sensorResult)
     {
-        if (sensor is VisionConeSensor && sensorResult is VisionConeHit visionHit) Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionHit.Target));
-        else if (sensor is ArtifactFocusSensor && sensorResult is VisionConeTarget visionTarget) Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionTarget));
+        if (sensor is VisionConeSensor && sensorResult is VisionConeHit visionHit)
+        {
+            Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
+            Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionHit.Target));
+        }
+        else if (sensor is ArtifactFocusSensor && sensorResult is VisionConeTarget visionTarget)
+        {
+            Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
+            Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionTarget));
+        }
     }
     #endregion
 }

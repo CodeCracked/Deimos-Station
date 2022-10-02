@@ -41,7 +41,8 @@ public class EnemyController : MonoBehaviour
 
     public void SetTask(AbstractEnemyTask task)
     {
-        Debug.Log(gameObject.name + " is starting task: " + task.GetType().Name, this);
+        if (task == null) Debug.Log(gameObject.name + " is stopping tasks", this);
+        else Debug.Log(gameObject.name + " is starting task: " + task.GetType().Name, this);
 
         if (_currentTask != null)
         {
@@ -49,8 +50,9 @@ public class EnemyController : MonoBehaviour
             StopCoroutine(_currentTaskCoroutine);
         }
 
+        _agent.ResetPath();
         _currentTask = task;
-        _currentTaskCoroutine = StartCoroutine(task.RunTask());
+        _currentTaskCoroutine = task != null ? StartCoroutine(task.RunTask()) : null;
     }
     public bool TestSensors(out AbstractEnemySensor sensor, out object sensorResult)
     {
@@ -77,12 +79,13 @@ public class EnemyAISettings
 
     [Header("Search Mode Settings")]
     public float SearchSpeed = 3.0f;
-    public float LookAroundSpeed = 60.0f;
+    public float SearchLookSpeed = 60.0f;
     public Vector2 LookTimerRange = new(1.0f, 3.0f);
 
     [Header("Persue Settings")]
     public float PersueSpeed = 6.0f;
     public float MaxTimeWithoutSpotting = 7.5f;
+    public float ReaquireLookSpeed = 360.0f;
 
     [Header("Vision Settings")]
     public float AreaSight = 16.0f;

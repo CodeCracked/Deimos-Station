@@ -7,7 +7,6 @@ public class PursueEnemyTask : AbstractEnemyTask
     private readonly VisionConeTarget _target;
 
     private Vector3 _lastSpottedPosition;
-    private float _targetLastSpotted;
 
     public PursueEnemyTask(EnemyController enemy, NavMeshAgent enemyAgent, VisionConeTarget target) : base(enemy, enemyAgent)
     {
@@ -16,37 +15,30 @@ public class PursueEnemyTask : AbstractEnemyTask
 
     public override IEnumerator RunTask()
     {
-        Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
         Enemy.Artifact.State = ArtifactState.Focused;
 
         NavMeshPath path = new();
         _lastSpottedPosition = _target.transform.position;
-        _targetLastSpotted = Time.time;
-
         EnemyAgent.speed = Enemy.AISettings.PersueSpeed;
         EnemyAgent.CalculatePath(_lastSpottedPosition, path);
         EnemyAgent.SetPath(path);
 
         while (true)
         {
-            // Look for Player
+            // If target is visible, pursue
             if (Enemy.VisionCone.CanSeeTarget(_target))
             {
                 EnemyAgent.CalculatePath(_lastSpottedPosition, path);
                 EnemyAgent.SetPath(path);
                 _lastSpottedPosition = _target.transform.position;
-                _targetLastSpotted = Time.time;
             }
+
+            // If target is not visible, try to reaquire
             else
             {
-
-            }
-
-            // Check Timeout
-            if (Time.time - _targetLastSpotted > Enemy.AISettings.MaxTimeWithoutSpotting)
-            {
-                Enemy.SetTask(new SearchEnemyTask(Enemy, EnemyAgent));
-                break;
+                while (!EnemyAgent.ReachedDestinationOrGaveUp()) yield return new WaitForSecondsRealtime(Enemy.AISettings.PathRefreshInterval);
+                Enemy.SetTask(new ReaquireEnemyTask(Enemy, EnemyAgent, _target));
+                yield break;
             }
 
             yield return new WaitForSeconds(Enemy.AISettings.PathRefreshInterval);
