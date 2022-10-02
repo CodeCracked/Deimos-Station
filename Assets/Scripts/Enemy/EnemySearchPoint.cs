@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[ExecuteInEditMode]
 public class EnemySearchPoint : MonoBehaviour
 {
     [Range(1, 5.0f)] public int Weight = 1;
@@ -13,9 +14,17 @@ public class EnemySearchPoint : MonoBehaviour
     public EnemySearchZone Zone;
 
     public Color Color => Zone ? Zone.ZoneColor : Color.red;
-    public float TotalSpan;
 
 #if UNITY_EDITOR
+    public void OnEnable()
+    {
+        if (!Zone)
+        {
+            Zone = GetComponentInParent<EnemySearchZone>();
+            if (Zone) Zone.RebuildZone = true;
+        }
+    }
+
     public void OnDrawGizmos()
     {
         if (Zone && Zone.AlwaysDraw) Draw();
@@ -54,12 +63,7 @@ public class EnemySearchPoint : MonoBehaviour
 
     public void OnValidate()
     {
-        TotalSpan = 0;
-        foreach (SearchArc arc in SearchArcs)
-        {
-            arc.Span = arc.AngleMaximum - arc.AngleMinimum;
-            TotalSpan += arc.Span;
-        }
+        foreach (SearchArc arc in SearchArcs) arc.Span = arc.AngleMaximum - arc.AngleMinimum;
     }
 }
 
