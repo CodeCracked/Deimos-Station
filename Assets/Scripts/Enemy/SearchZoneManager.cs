@@ -31,6 +31,13 @@ public static class SearchZoneManager
         EnemySearchZone currentDecision = null;
         SearchStatus currentDecisionStatus = null;
 
+        if (permittedZones.Count == 1)
+        {
+            currentDecision = permittedZones[0];
+            BeginSearch(currentDecision);
+            return currentDecision;
+        }
+
         foreach (EnemySearchZone zone in currentZone.ConnectedZones)
         {
             // If this zone is not permitted, continue to next zone
@@ -71,6 +78,7 @@ public static class SearchZoneManager
             }
         }
 
+        if (!currentDecision) currentDecision = permittedZones[Random.Range(0, permittedZones.Count)];
         BeginSearch(currentDecision);
         return currentDecision;
     }
