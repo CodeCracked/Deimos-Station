@@ -7,8 +7,13 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Enemy Config")]
     public ArtifactManager Artifact;
+    public EnemySoundManager SoundManager;
+    public VisionCone VisionCone;
     public EnemySearchZone[] SearchZones;
     public EnemyAISettings AISettings;
+
+    [Header("Enemy Sounds")]
+    public AudioClipPool PursueSound;
 
     private NavMeshAgent _agent;
     private AbstractEnemyTask _currentTask;
@@ -35,6 +40,8 @@ public class EnemyController : MonoBehaviour
 
     public void SetTask(AbstractEnemyTask task)
     {
+        Debug.Log(gameObject.name + " is starting task: " + task.GetType().Name, this);
+
         if (_currentTask != null)
         {
             _currentTask.CancelTask();
@@ -64,10 +71,17 @@ public class EnemyController : MonoBehaviour
 [Serializable]
 public class EnemyAISettings
 {
+    [Header("Generic Settings")]
+    public float PathRefreshInterval = 0.2f;
+
     [Header("Search Mode Settings")]
+    public float SearchSpeed = 3.0f;
     public float LookAroundSpeed = 60.0f;
     public Vector2 LookTimerRange = new(1.0f, 3.0f);
-    public float SearchSpeed = 3.0f;
+
+    [Header("Persue Settings")]
+    public float PersueSpeed = 6.0f;
+    public float MaxTimeWithoutSpotting = 7.5f;
 
     [Header("Vision Settings")]
     public float AreaSight = 16.0f;

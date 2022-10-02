@@ -33,11 +33,18 @@ public class VisionConeSensor : AbstractEnemySensor
                 continue;
             }
 
-            // Enemy Area Light
+            // If Enemy Artifact isn't Focused
             else
             {
-                ArtifactManager targetArtifact = hit.GameObject.GetComponentInChildren<ArtifactManager>();
-                if (targetArtifact && targetArtifact.State == ArtifactState.Area)
+                // If target artifact is in area mode, it is sensed
+                if (hit.Artifact && hit.Artifact.State == ArtifactState.Area)
+                {
+                    ApplyResultPriority(ref currentResult, hit);
+                    continue;
+                }
+                
+                // If target is not in darkness, it is sensed
+                else if (!hit.InDarkness)
                 {
                     ApplyResultPriority(ref currentResult, hit);
                     continue;

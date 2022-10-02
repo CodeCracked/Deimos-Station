@@ -5,7 +5,6 @@ using UnityEngine.AI;
 public class SearchEnemyTask : AbstractEnemyTask
 {
     private static readonly int FailedPointThreshold = 10;
-    private static readonly float PathCheckInterval = 0.2f;
 
     public SearchEnemyTask(EnemyController enemy, NavMeshAgent enemyAgent) : base(enemy, enemyAgent)
     {
@@ -52,7 +51,7 @@ public class SearchEnemyTask : AbstractEnemyTask
                 }
 
                 // Wait for Path Completion, Then Look Around
-                while (!EnemyAgent.ReachedDestinationOrGaveUp()) yield return new WaitForSecondsRealtime(PathCheckInterval);
+                while (!EnemyAgent.ReachedDestinationOrGaveUp()) yield return new WaitForSecondsRealtime(Enemy.AISettings.PathRefreshInterval);
                 yield return LookAroundPoint(searchPoint);
                 searchLength--;
 
@@ -103,10 +102,7 @@ public class SearchEnemyTask : AbstractEnemyTask
     #region Sensor Actions
     public override void OnSensorTriggered(AbstractEnemySensor sensor, object sensorResult)
     {
-        if (sensor is VisionConeSensor visionConeSensor && sensorResult is VisionConeHit visionHit)
-        {
-            Debug.Log("Found " + visionHit.GameObject.name);
-        }
+        if (sensor is VisionConeSensor && sensorResult is VisionConeHit visionHit) Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionHit.Target));
     }
     #endregion
 }

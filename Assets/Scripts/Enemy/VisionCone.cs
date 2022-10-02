@@ -45,15 +45,39 @@ public class VisionCone : MonoBehaviour
     public List<VisionConeHit> CalculateResults(bool checkMultiplePoints = true)
     {
         _resultsCache.Clear();
+        foreach (VisionConeTarget target in _targets) CanSeeTarget(target, _resultsCache, checkMultiplePoints);
+        return _resultsCache;
+    }
 
-        foreach (VisionConeTarget target in _targets)
+    public bool CanSeeTarget(VisionConeTarget target, List<VisionConeHit> hitBuffer = null, bool checkMultiplePoints = true)
+    {
+        bool spotted = false;
+        foreach (Transform targetPoint in target.TargetPoints)
         {
-            foreach (Transform targetPoint in target.TargetPoints)
+            // Blindsight Check
+            Vector3 deltaPosition = targetPoint.position - transform.position;
+            Vector3 heading = deltaPosition.normalized;
+            if (deltaPosition.sqrMagnitude <= BlindsightRadius * BlindsightRadius)
             {
-                // Blindsight Check
-                Vector3 deltaPosition = targetPoint.position - transform.position;
-                Vector3 heading = deltaPosition.normalized;
-                if (deltaPosition.sqrMagnitude <= BlindsightRadius * BlindsightRadius)
+                Ray ray = new(transform.position, heading);
+                if (Physics.Raycast(ray, out RaycastHit hit, Range, LayerMask.value))
+                {
+                    VisionConeTarget hitTarget = hit.collider.gameObject.GetComponent<VisionConeTarget>();
+                    if (!hitTarget) hitTarget = hit.collider.gameObject.GetComponentInChildren<VisionConeTarget>();
+                    if (hitTarget && hitTarget == target)
+                    {
+                        hitBuffer?.Add(new VisionConeHit(target, targetPoint, hit, transform.position, transform.forward));
+                        spotted = true;
+                        if (!checkMultiplePoints) break;
+                    }
+                }
+            }
+
+            // Cone Check
+            else
+            {
+                float angle = Vector3.Angle(transform.forward, heading);
+                if (angle <= Angle * 0.5f)
                 {
                     Ray ray = new(transform.position, heading);
                     if (Physics.Raycast(ray, out RaycastHit hit, Range, LayerMask.value))
@@ -62,35 +86,15 @@ public class VisionCone : MonoBehaviour
                         if (!hitTarget) hitTarget = hit.collider.gameObject.GetComponentInChildren<VisionConeTarget>();
                         if (hitTarget && hitTarget == target)
                         {
-                            _resultsCache.Add(new VisionConeHit(target, targetPoint, hit, transform.position, transform.forward));
+                            hitBuffer?.Add(new VisionConeHit(target, targetPoint, hit, transform.position, transform.forward));
+                            spotted = true;
                             if (!checkMultiplePoints) break;
                         }
                     }
                 }
-                
-                // Cone Check
-                else
-                {
-                    float angle = Vector3.Angle(transform.forward, heading);
-                    if (angle <= Angle * 0.5f)
-                    {
-                        Ray ray = new(transform.position, heading);
-                        if (Physics.Raycast(ray, out RaycastHit hit, Range, LayerMask.value))
-                        {
-                            VisionConeTarget hitTarget = hit.collider.gameObject.GetComponent<VisionConeTarget>();
-                            if (!hitTarget) hitTarget = hit.collider.gameObject.GetComponentInChildren<VisionConeTarget>();
-                            if (hitTarget && hitTarget == target)
-                            {
-                                _resultsCache.Add(new VisionConeHit(target, targetPoint, hit, transform.position, transform.forward));
-                                if (!checkMultiplePoints) break;
-                            }
-                        }
-                    }
-                }                
             }
         }
-
-        return _resultsCache;
+        return spotted;
     }
 }
 
@@ -99,6 +103,7 @@ public class VisionConeHit
     public readonly VisionConeTarget Target;
     public readonly GameObject GameObject;
     public readonly Transform TargetPoint;
+    public readonly ArtifactManager Artifact;
     public readonly RaycastHit Raycast;
     public readonly float Distance;
     public readonly float Angle;
@@ -111,6 +116,7 @@ public class VisionConeHit
         Target = target;
         GameObject = target.gameObject;
         TargetPoint = targetPoint;
+        Artifact = raycast.collider.GetComponentInChildren<ArtifactManager>();
         Raycast = raycast;
         Distance = raycast.distance;
         Angle = Vector3.Angle(coneHeading, heading);
