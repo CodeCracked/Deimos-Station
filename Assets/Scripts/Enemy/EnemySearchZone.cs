@@ -6,6 +6,7 @@ public class EnemySearchZone : MonoBehaviour
     [Header("Zone Config")]
     public int SearchLengthMin = 3;
     public int SearchLengthMax = 7;
+    public EnemySearchZone[] ConnectedZones;
     public Color ZoneColor = Color.black;
     public bool RebuildZone;
 
@@ -40,6 +41,16 @@ public class EnemySearchZone : MonoBehaviour
         Gizmos.DrawWireCube(ZoneBounds.center, ZoneBounds.size);
     }
 #endif
+
+    public void Awake()
+    {
+        SearchZoneManager.RegisterZone(this);
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
+        if (enemy) enemy.CurrentZone = this;
+    }
 
     public void FindSearchPoints()
     {

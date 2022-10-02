@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +10,8 @@ public class EnemyController : MonoBehaviour
     public ArtifactManager Artifact;
     public EnemySoundManager SoundManager;
     public VisionCone VisionCone;
-    public EnemySearchZone[] SearchZones;
+    public EnemySearchZone CurrentZone;
+    public List<EnemySearchZone> PermittedZones;
     public EnemyAISettings AISettings;
 
     [Header("Enemy Sounds")]
@@ -30,7 +32,9 @@ public class EnemyController : MonoBehaviour
             new VisionConeSensor(this, _agent, 0.1f),
             new ArtifactFocusSensor(this, _agent, 0.1f)
         };
-
+    }
+    public void Start()
+    {
         SetTask(new SearchEnemyTask(this, _agent));
     }
 

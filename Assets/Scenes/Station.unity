@@ -567,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38065473}
   - component: {fileID: 38065474}
+  - component: {fileID: 38065475}
   m_Layer: 0
   m_Name: Labratory Zone
   m_TagString: Untagged
@@ -610,6 +611,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 520034053}
+  - {fileID: 1696809262}
   ZoneColor: {r: 0, g: 0.5803922, b: 1, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -623,7 +627,20 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 44, y: 0, z: -4}
     m_Extent: {x: 17, y: 0, z: 17}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &38065475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38065472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36, y: 4, z: 36}
+  m_Center: {x: 44, y: 1.9999995, z: -4}
 --- !u!1 &42940252
 GameObject:
   m_ObjectHideFlags: 0
@@ -23369,7 +23386,8 @@ MonoBehaviour:
   Artifact: {fileID: 158330927}
   SoundManager: {fileID: 158330930}
   VisionCone: {fileID: 1424373632}
-  SearchZones:
+  CurrentZone: {fileID: 38065474}
+  PermittedZones:
   - {fileID: 38065474}
   - {fileID: 520034053}
   - {fileID: 1696809262}
@@ -23895,6 +23913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203603407}
   - component: {fileID: 203603408}
+  - component: {fileID: 203603409}
   m_Layer: 0
   m_Name: Lower Reactor Zone
   m_TagString: Untagged
@@ -23938,6 +23957,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 1452269434}
+  - {fileID: 393266181}
   ZoneColor: {r: 0.6156863, g: 0, b: 0, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -23951,7 +23973,20 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 8, y: 0, z: 48}
     m_Extent: {x: 21, y: 0, z: 21}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &203603409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203603406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 44, y: 4, z: 30}
+  m_Center: {x: 8, y: 2, z: 41}
 --- !u!1 &229589530
 GameObject:
   m_ObjectHideFlags: 0
@@ -27451,6 +27486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393266180}
   - component: {fileID: 393266181}
+  - component: {fileID: 393266182}
   m_Layer: 0
   m_Name: Life Support Zone
   m_TagString: Untagged
@@ -27497,6 +27533,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 1696809262}
+  - {fileID: 1452269434}
+  - {fileID: 203603408}
   ZoneColor: {r: 1, g: 0.8470589, b: 0, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -27513,7 +27553,20 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 56, y: 0, z: 82}
     m_Extent: {x: 21, y: 0, z: 35}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &393266182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393266179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48, y: 4, z: 76}
+  m_Center: {x: 58, y: 2, z: 80}
 --- !u!1 &397064315
 GameObject:
   m_ObjectHideFlags: 0
@@ -59734,6 +59787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 520034052}
   - component: {fileID: 520034053}
+  - component: {fileID: 520034054}
   m_Layer: 0
   m_Name: Server Room Zone
   m_TagString: Untagged
@@ -59778,6 +59832,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 1696809262}
+  - {fileID: 38065474}
   ZoneColor: {r: 0.29803923, g: 1, b: 0, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -59792,7 +59849,20 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 4, y: 0, z: -24}
     m_Extent: {x: 17, y: 0, z: 13}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &520034054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520034051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36, y: 4, z: 28}
+  m_Center: {x: 4, y: 2, z: -24}
 --- !u!1 &524983858
 GameObject:
   m_ObjectHideFlags: 0
@@ -67096,7 +67166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729723325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 4, y: 1, z: 28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82482,6 +82552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452269433}
   - component: {fileID: 1452269434}
+  - component: {fileID: 1452269435}
   m_Layer: 0
   m_Name: Upper Reactor Zone
   m_TagString: Untagged
@@ -82525,6 +82596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 203603408}
+  - {fileID: 393266181}
   ZoneColor: {r: 1, g: 0, b: 0, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -82538,7 +82612,20 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 6, y: 0, z: 90}
     m_Extent: {x: 19, y: 0, z: 23}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &1452269435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452269432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48, y: 4, z: 38}
+  m_Center: {x: 6, y: 2, z: 99}
 --- !u!43 &1485138443
 Mesh:
   m_ObjectHideFlags: 0
@@ -84311,6 +84398,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1696809261}
   - component: {fileID: 1696809262}
+  - component: {fileID: 1696809264}
+  - component: {fileID: 1696809263}
   m_Layer: 0
   m_Name: Administration Zone
   m_TagString: Untagged
@@ -84355,6 +84444,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SearchLengthMin: 3
   SearchLengthMax: 7
+  ConnectedZones:
+  - {fileID: 38065474}
+  - {fileID: 393266181}
+  - {fileID: 520034053}
   ZoneColor: {r: 0.69803923, g: 0, b: 1, a: 1}
   RebuildZone: 0
   SearchPoints:
@@ -84369,7 +84462,33 @@ MonoBehaviour:
   ZoneBounds:
     m_Center: {x: 20, y: 0, z: 14}
     m_Extent: {x: 45, y: 0, z: 19}
-  AlwaysDraw: 1
+  AlwaysDraw: 0
+--- !u!65 &1696809263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696809260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36, y: 4, z: 12}
+  m_Center: {x: 52, y: 2, z: 32}
+--- !u!65 &1696809264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696809260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 52, y: 4, z: 28}
+  m_Center: {x: -4, y: 2, z: 8}
 --- !u!1 &1696893641
 GameObject:
   m_ObjectHideFlags: 0

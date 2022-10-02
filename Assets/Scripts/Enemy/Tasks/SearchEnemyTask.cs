@@ -22,7 +22,7 @@ public class SearchEnemyTask : AbstractEnemyTask
         do
         {
             // Start New Search
-            searchZone = Enemy.SearchZones[Random.Range(0, Enemy.SearchZones.Length)];
+            searchZone = SearchZoneManager.BeginPrioritySearch(Enemy.CurrentZone, Enemy.PermittedZones);
             searchLength = Random.Range(searchZone.SearchLengthMin, searchZone.SearchLengthMax + 1);
 
             Debug.LogFormat("Starting Search at {0} with length {1}", searchZone.gameObject.name, searchLength);
