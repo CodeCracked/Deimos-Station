@@ -12,8 +12,8 @@ public class OptionsManager : MonoBehaviour
 
         Instance = this;
         Brightness = PlayerPrefs.GetFloat("Brightness", Brightness);
-        Brightness = PlayerPrefs.GetFloat("MouseXSensitivity", MouseXSensitivity);
-        Brightness = PlayerPrefs.GetFloat("MouseYSensitivity", MouseYSensitivity);
+        MouseXSensitivity = PlayerPrefs.GetFloat("MouseXSensitivity", MouseXSensitivity);
+        MouseYSensitivity = PlayerPrefs.GetFloat("MouseYSensitivity", MouseYSensitivity);
     }
     public void OnApplicationQuit()
     {

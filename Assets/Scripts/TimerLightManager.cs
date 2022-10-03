@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1000)]
 public class TimerLightManager : MonoBehaviour
 {
     public static bool AreLightsOn { get; private set; }
@@ -19,6 +20,10 @@ public class TimerLightManager : MonoBehaviour
     {
         _turningOn = false;
         AreLightsOn = true;
+    }
+    public void Awake()
+    {
+        _lights.Clear();
     }
 
     public void Update()

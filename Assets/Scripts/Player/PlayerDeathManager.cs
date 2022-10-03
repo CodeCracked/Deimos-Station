@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerDeathManager : MonoBehaviour
 {
     public PlayerController Controller;
+    public PauseManager PauseManager;
     public Rigidbody Rigidbody;
 
     private bool _dead;
@@ -23,6 +24,8 @@ public class PlayerDeathManager : MonoBehaviour
         _dead = true;
 
         Controller.enabled = false;
+        PauseManager.Unpause();
+        PauseManager.enabled = false;
         Rigidbody.constraints = RigidbodyConstraints.FreezeRotationY;
 
         Vector2 rand = Random.insideUnitCircle.normalized;

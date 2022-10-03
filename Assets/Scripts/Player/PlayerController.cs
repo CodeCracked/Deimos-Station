@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        _motor.DoMouseLook(new Vector2(Input.GetAxisRaw(MouseXAxis) * OptionsManager.MouseXSensitivity, Input.GetAxisRaw(MouseYAxis) * OptionsManager.MouseYSensitivity));
+        _motor.DoMouseLook(Time.timeScale * new Vector2(Input.GetAxisRaw(MouseXAxis) * OptionsManager.MouseXSensitivity, Input.GetAxisRaw(MouseYAxis) * OptionsManager.MouseYSensitivity));
         if (!string.IsNullOrWhiteSpace(JumpButton) && Input.GetButtonDown(JumpButton)) _motor.Jump(JumpHeight);
     }
     public void FixedUpdate()
