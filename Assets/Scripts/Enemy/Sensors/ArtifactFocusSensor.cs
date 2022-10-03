@@ -38,6 +38,8 @@ public class ArtifactFocusSensor : AbstractEnemySensor
         }
 
         sensorResult = currentResult;
+
+        if (sensorResult != null) DisableSensor(0.5f);
         return sensorResult != null;
     }
 

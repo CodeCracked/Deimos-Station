@@ -47,7 +47,6 @@ public class ReaquireEnemyTask : AbstractEnemyTask
         // Resume Search Mode
         Enemy.SetTask(new SearchEnemyTask(Enemy, EnemyAgent));
     }
-
     private IEnumerator SearchForTarget()
     {
         yield break;

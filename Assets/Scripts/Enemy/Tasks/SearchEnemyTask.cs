@@ -87,11 +87,7 @@ public class SearchEnemyTask : AbstractEnemyTask
             Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
             Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionHit.Target));
         }
-        else if (sensor is ArtifactFocusSensor && sensorResult is VisionConeTarget visionTarget)
-        {
-            Enemy.SoundManager.PlaySound(Enemy.NoticedSound, 96.0f, 1.0f);
-            Enemy.SetTask(new PursueEnemyTask(Enemy, EnemyAgent, visionTarget));
-        }
+        else if (sensor is ArtifactFocusSensor && sensorResult is VisionConeTarget visionTarget) Enemy.SetTask(new InvestigateEnemyTask(Enemy, EnemyAgent, visionTarget.transform.position));
     }
     #endregion
 }

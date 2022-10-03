@@ -7,13 +7,14 @@ public class RoomObjectiveManager : MonoBehaviour
 {
     public Objective[] PossibleObjectives;
     public int ObjectiveCount;
-    public Objective FinalObjective;
 
     public Objective[] Objectives { get; private set; }
     public int ObjectivesRemaining { get; private set; }
 
     public void Awake()
     {
+        if (PossibleObjectives.Length == 0) PossibleObjectives = GetComponentsInChildren<Objective>();
+
         Objectives = new Objective[ObjectiveCount];
         List<Objective> randomized = new List<Objective>(PossibleObjectives).OrderBy(e => Guid.NewGuid()).ToList();
         foreach (Objective objective in PossibleObjectives) objective.gameObject.SetActive(false);
@@ -25,18 +26,14 @@ public class RoomObjectiveManager : MonoBehaviour
             Objectives[i].gameObject.SetActive(true);
             if (!Objectives[i].Completed) ObjectivesRemaining++;
         }
-        FinalObjective.enabled = false;
     }
 
     private void OnObjectiveCompleted()
     {
         ObjectivesRemaining--;
-        if (ObjectivesRemaining <= 0) FinalObjective.enabled = true;
     }
     private void OnObjectiveReverted()
     {
         ObjectivesRemaining++;
-        FinalObjective.enabled = false;
-        FinalObjective.SetCompleted(false, true);
     }
 }

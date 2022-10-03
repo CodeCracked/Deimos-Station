@@ -1,8 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Objective : MonoBehaviour
 {
+    [Header("Alert Settings")]
+    public PlayerController Player;
+    [Range(0.0f, 1.0f)] public float AlertChance = 0.0f;
+    public float AlertDistance = 64.0f;
+    public LayerMask EnemyLayerMask;
+
+    [Header("Objective Settings")]
     public bool Completed = false;
     public bool CanRevert = false;
     [ColorUsage(true, true)] public Color StartingColor = 2 * Color.red;
@@ -14,6 +23,7 @@ public class Objective : MonoBehaviour
     public void Start()
     {
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
+        OnCompleted.AddListener(DoAlertCheck);
     }
 
     public void SetCompleted(bool completed = true, bool force = false)
@@ -31,5 +41,49 @@ public class Objective : MonoBehaviour
     public void Toggle()
     {
         SetCompleted(!Completed);
+    }
+
+    private void DoAlertCheck()
+    {
+        if (Random.value < AlertChance)
+        {
+            Collider[] overlap = Physics.OverlapSphere(Player.transform.position, AlertDistance, EnemyLayerMask);
+            EnemyController alertedEnemy = null;
+            float alertedDistance = int.MaxValue;
+
+            // For Each Collider in Range
+            foreach (Collider collider in overlap)
+            {
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                NavMeshAgent enemyAgent = collider.GetComponent<NavMeshAgent>();
+
+                // If the collider is an enemy
+                if (enemy && enemyAgent)
+                {
+                    // Calculate a path from the enemy to the alert
+                    NavMeshPath path = new();
+                    enemyAgent.CalculatePath(Player.transform.position, path);
+
+                    // If the path exists
+                    if (path.status == NavMeshPathStatus.PathComplete)
+                    {
+                        // Check the path distance isn't more than the alert distance and that the enemy is currently searching
+                        float distance = path.GetLength();
+                        if (distance > AlertDistance) continue;
+                        if (enemy.CurrentTask is not SearchEnemyTask) continue;
+
+                        // If the enemy is the closest, select this enemy
+                        if (!alertedEnemy || alertedDistance > distance)
+                        {
+                            alertedEnemy = enemy;
+                            alertedDistance = distance;
+                        }
+                    }
+                }
+            }
+
+            // Alert the enemy if one was selected
+            if (alertedEnemy) alertedEnemy.SetTask(new InvestigateEnemyTask(alertedEnemy, alertedEnemy.GetComponent<NavMeshAgent>(), Player.transform.position));
+        }
     }
 }

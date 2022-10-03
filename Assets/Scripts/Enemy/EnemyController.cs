@@ -15,10 +15,11 @@ public class EnemyController : MonoBehaviour
     public EnemyAISettings AISettings;
 
     [Header("Enemy Sounds")]
+    public AudioClipPool InvestigateSound;
     public AudioClipPool NoticedSound;
 
+    public AbstractEnemyTask CurrentTask { get; private set; }
     private NavMeshAgent _agent;
-    private AbstractEnemyTask _currentTask;
     private Coroutine _currentTaskCoroutine;
 
     private AbstractEnemySensor[] _sensors;
@@ -40,7 +41,7 @@ public class EnemyController : MonoBehaviour
 
     public void Update()
     {
-        if (_currentTask != null && TestSensors(out AbstractEnemySensor sensor, out object result)) _currentTask.OnSensorTriggered(sensor, result);
+        if (CurrentTask != null && TestSensors(out AbstractEnemySensor sensor, out object result)) CurrentTask.OnSensorTriggered(sensor, result);
     }
 
     public void SetTask(AbstractEnemyTask task)
@@ -48,14 +49,14 @@ public class EnemyController : MonoBehaviour
         if (task == null) Debug.Log(gameObject.name + " is stopping tasks", this);
         else Debug.Log(gameObject.name + " is starting task: " + task.GetType().Name, this);
 
-        if (_currentTask != null)
+        if (CurrentTask != null)
         {
-            _currentTask.CancelTask();
+            CurrentTask.CancelTask();
             StopCoroutine(_currentTaskCoroutine);
         }
 
         _agent.ResetPath();
-        _currentTask = task;
+        CurrentTask = task;
         _currentTaskCoroutine = task != null ? StartCoroutine(task.RunTask()) : null;
     }
     public bool TestSensors(out AbstractEnemySensor sensor, out object sensorResult)
@@ -85,6 +86,10 @@ public class EnemyAISettings
     public float SearchSpeed = 3.0f;
     public float SearchLookSpeed = 60.0f;
     public Vector2 LookTimerRange = new(1.0f, 3.0f);
+
+    [Header("Investigate Mode Settings")]
+    public float InvestigateSpeed = 4.0f;
+    public float InvestigateLookSpeed = 90.0f;
 
     [Header("Persue Settings")]
     public float PersueSpeed = 6.0f;
