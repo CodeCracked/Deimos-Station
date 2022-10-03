@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -20,12 +19,42 @@ public class Objective : MonoBehaviour
     public UnityEvent OnCompleted;
     public UnityEvent OnReverted;
 
+    private bool _glowing;
+
     public void Start()
     {
-        if (OptionsManager.GlowingObjectives) Renderer.material.EnableKeyword("_EMISSION");
+        if (OptionsManager.GlowingObjectives)
+        {
+            Renderer.material.EnableKeyword("_EMISSION");
+            _glowing = true;
+        }
+        else
+        {
+            Renderer.material.DisableKeyword("_EMISSION");
+            Renderer.material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+            _glowing = false;
+        }
+
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
         Renderer.material.color = Completed ? MetColor : StartingColor;
         OnCompleted.AddListener(DoAlertCheck);
+    }
+    public void Update()
+    {
+        if (OptionsManager.GlowingObjectives != _glowing)
+        {
+            if (OptionsManager.GlowingObjectives)
+            {
+                Renderer.material.EnableKeyword("_EMISSION");
+                _glowing = true;
+            }
+            else
+            {
+                Renderer.material.DisableKeyword("_EMISSION");
+                Renderer.material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
+                _glowing = false;
+            }
+        }
     }
 
     public void SetCompleted(bool completed = true, bool force = false)
