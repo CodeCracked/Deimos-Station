@@ -43,5 +43,7 @@ public class DeathScreenManager : MonoBehaviour
         }
 
         if (Menu) Menu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

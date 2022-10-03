@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     public string JumpButton = "Jump";
 
     [Header("Handling")]
-    [Range(1.0f, 5.0f)] public float MouseXSensitivity = 2.0f;
-    [Range(1.0f, 5.0f)] public float MouseYSensitivity = 2.0f;
     [Range(1.0f, 10.0f)] public float Speed = 5.0f;
     [Range(0.0f, 5.0f)] public float JumpHeight = 3.0f;
 
@@ -27,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        _motor.DoMouseLook(new Vector2(Input.GetAxisRaw(MouseXAxis) * MouseXSensitivity, Input.GetAxisRaw(MouseYAxis) * MouseYSensitivity));
-        if (Input.GetButtonDown(JumpButton)) _motor.Jump(JumpHeight);
+        _motor.DoMouseLook(new Vector2(Input.GetAxisRaw(MouseXAxis) * OptionsManager.MouseXSensitivity, Input.GetAxisRaw(MouseYAxis) * OptionsManager.MouseYSensitivity));
+        if (!string.IsNullOrWhiteSpace(JumpButton) && Input.GetButtonDown(JumpButton)) _motor.Jump(JumpHeight);
     }
     public void FixedUpdate()
     {

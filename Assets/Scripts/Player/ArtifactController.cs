@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ArtifactController : MonoBehaviour
@@ -21,8 +20,12 @@ public class ArtifactController : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButton(ConcealButton)) Artifact.State = ArtifactState.Concealed;
-        else if (Input.GetButton(FocusButton)) Artifact.State = ArtifactState.Focused;
+        if (Player.enabled)
+        {
+            if (Input.GetButton(ConcealButton)) Artifact.State = ArtifactState.Concealed;
+            else if (Input.GetButton(FocusButton)) Artifact.State = ArtifactState.Focused;
+            else Artifact.State = ArtifactState.Area;
+        }
         else Artifact.State = ArtifactState.Area;
     }
 }
