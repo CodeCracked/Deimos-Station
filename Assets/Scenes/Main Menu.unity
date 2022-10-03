@@ -1648,9 +1648,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1785067639875959530, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820500943955238642, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802362748789139, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363079248223, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363196614370, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363329994494, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363329994494, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363329994494, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -204.89014
+      objectReference: {fileID: 0}
     - target: {fileID: 4160802363463977922, guid: efde01ea16331a64d91304052c4ce009, type: 3}
       propertyPath: m_Name
       value: Options Menu Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363463977922, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4160802363463977926, guid: efde01ea16331a64d91304052c4ce009, type: 3}
       propertyPath: m_Pivot.x
@@ -1744,5 +1780,17 @@ PrefabInstance:
       propertyPath: MenuToShow
       value: 
       objectReference: {fileID: 258987836}
+    - target: {fileID: 4160802363664150994, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363741943027, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160802363749903208, guid: efde01ea16331a64d91304052c4ce009, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efde01ea16331a64d91304052c4ce009, type: 3}
