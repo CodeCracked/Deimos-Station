@@ -22,7 +22,9 @@ public class Objective : MonoBehaviour
 
     public void Start()
     {
+        if (OptionsManager.GlowingObjectives) Renderer.material.EnableKeyword("_EMISSION");
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
+        Renderer.material.color = Completed ? MetColor : StartingColor;
         OnCompleted.AddListener(DoAlertCheck);
     }
 
@@ -37,6 +39,7 @@ public class Objective : MonoBehaviour
             Completed = completed;
         }
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
+        Renderer.material.color = Completed ? MetColor : StartingColor;
     }
     public void Toggle()
     {

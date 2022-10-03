@@ -15,6 +15,7 @@ public class OptionsManager : MonoBehaviour
         MouseXSensitivity = PlayerPrefs.GetFloat("MouseXSensitivity", MouseXSensitivity);
         MouseYSensitivity = PlayerPrefs.GetFloat("MouseYSensitivity", MouseYSensitivity);
         Difficulty = PlayerPrefs.GetInt("Difficulty", Difficulty);
+        GlowingObjectives = PlayerPrefs.GetInt("GlowingObjectives", GlowingObjectives ? 1 : 0) > 0;
     }
     public void OnApplicationQuit()
     {
@@ -22,6 +23,7 @@ public class OptionsManager : MonoBehaviour
         PlayerPrefs.SetFloat("MouseXSensitivity", MouseXSensitivity);
         PlayerPrefs.SetFloat("MouseYSensitivity", MouseYSensitivity);
         PlayerPrefs.SetInt("Difficulty", Difficulty);
+        PlayerPrefs.SetInt("GlowingObjectives", GlowingObjectives ? 1 : 0);
     }
     #endregion
 
@@ -39,6 +41,7 @@ public class OptionsManager : MonoBehaviour
     public static float MouseXSensitivity = 1.5f;
     public static float MouseYSensitivity = 1.5f;
     public static int Difficulty = 1;
+    public static bool GlowingObjectives = false;
 
     private static float _brightness = 1.0f;
 }
