@@ -1,30 +1,29 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Objective : Interactable
+public class Objective : MonoBehaviour
 {
-    public static int ObjectivesRemaining { get; private set; }
-
     public bool Completed = false;
     public bool CanRevert = false;
     [ColorUsage(true, true)] public Color StartingColor = 2 * Color.red;
     [ColorUsage(true, true)] public Color MetColor = 2 * Color.green;
     public MeshRenderer Renderer;
+    public UnityEvent OnCompleted;
+    public UnityEvent OnReverted;
 
     public void Start()
     {
-        ObjectivesRemaining++;
-        OnInteract.AddListener(InteractListener);
-
-        if (Completed) ObjectivesRemaining--;
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
     }
 
-    public void SetCompleted(bool completed = true)
+    public void SetCompleted(bool completed = true, bool force = false)
     {
+        if (!enabled && !force) return;
+        if (Completed && !completed && !CanRevert && !force) return;
         if (Completed != completed)
         {
-            if (completed) ObjectivesRemaining--;
-            else ObjectivesRemaining++;
+            if (completed) OnCompleted.Invoke();
+            else OnReverted.Invoke();
             Completed = completed;
         }
         Renderer.material.SetColor("_EmissionColor", Completed ? MetColor : StartingColor);
@@ -32,10 +31,5 @@ public class Objective : Interactable
     public void Toggle()
     {
         SetCompleted(!Completed);
-    }
-
-    public void InteractListener()
-    {
-        if (!Completed || CanRevert) Toggle();
     }
 }
